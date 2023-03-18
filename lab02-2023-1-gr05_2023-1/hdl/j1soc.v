@@ -1,15 +1,16 @@
 module j1soc#(
       parameter   bootram_file     = "../firmware/Hello_World/j1.mem",
-      parameter   clk_freq         = 25000000,
-      parameter   uart_baud_rate   = 115200
+      parameter   clk_freq         = 100_000_000,
+      parameter   uart_baud_rate   = 115_200
 )(
-   uart_tx, uart_rx, ledout,
+   uart_tx, uart_rx, ledout,ledout2,
    sys_clk_i, sys_rst_i
 );
    input  sys_clk_i, sys_rst_i;
    input  uart_rx;
    output uart_tx;
    output ledout;
+   output ledout2;
 //------------------------------------ regs and wires-------------------------------
    wire                 j1_io_rd;//********************** J1
    wire                 j1_io_wr;//********************** J1
@@ -26,7 +27,7 @@ module j1soc#(
   (.bootram_file(bootram_file)
   ) cpu0(
     sys_clk_i, 
-    sys_rst_i, 
+    ~sys_rst_i, 
     j1_io_din, 
     j1_io_rd, 
     j1_io_wr, 
@@ -37,7 +38,7 @@ module j1soc#(
   peripheral_mult  
     per_m (
       .clk(sys_clk_i), 
-      .rst(sys_rst_i), 
+      .rst(~sys_rst_i), 
       .d_in(j1_io_dout), 
       .cs(cs[1]), 
       .addr(j1_io_addr[3:0]), 
@@ -49,7 +50,7 @@ module j1soc#(
   peripheral_div  
     per_d (
       .clk(sys_clk_i), 
-      .rst(sys_rst_i), 
+      .rst(~sys_rst_i), 
       .d_in(j1_io_dout), 
       .cs(cs[2]), 
       .addr(j1_io_addr[3:0]), 
@@ -60,7 +61,7 @@ module j1soc#(
 
   peripheral_uart   per_u(
      .clk(sys_clk_i), 
-     .rst(sys_rst_i), 
+     .rst(~sys_rst_i), 
      .d_in(j1_io_dout), 
      .cs(cs[3]), 
      .addr(j1_io_addr[3:0]), 
@@ -72,18 +73,18 @@ module j1soc#(
      .ledout(ledout)
    );
 
-  dpRAM_interface 
-    dpRm(
-    .clk(sys_clk_i), 
-    .d_in(j1_io_dout), 
-    .cs(cs[4]), 
-    .addr(j1_io_addr[7:0]), 
-    .rd(j1_io_rd), 
-    .wr(j1_io_wr), 
-    .d_out(dp_ram_dout)
- );
 
+reg [20:0] counter;
+wire clk ;
+reg ledout2t;
+assign ledout2 = ledout2t;
+assign clk =sys_clk_i;
+always @(clk) begin
+  counter=counter+1;
+  if (counter ==0)
+    ledout2t = ~ledout2t;
 
+end
   // ============== Chip_Select (Addres decoder) ======================== 
   // se hace con los 8 bits mas significativos de j1_io_addr
   always @*

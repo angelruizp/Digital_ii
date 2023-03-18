@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date                      : Thu Mar 16 09:17:31 2023
+| Date                      : Sat Mar 18 09:19:36 2023
 | Host                      : Angel running 64-bit Ubuntu 22.04.1 LTS
 | Command                   : report_io -file j1soc-io.rpt
 | Design                    : j1soc
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|             5 |
+|             6 |
 +---------------+
 
 
@@ -191,7 +191,7 @@ Table of Contents
 | J10        |             | Dedicated  | VP_0                         | XADC        |             |       0 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | J11        |             |            | VCCINT                       | VCCINT      |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | J12        |             |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
-| J13        |             | High Range | IO_L17N_T2_A25_15            | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| J13        | ledout2     | High Range | IO_L17N_T2_A25_15            | OUTPUT      | LVCMOS33    |      15 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | J14        |             | High Range | IO_L19P_T3_A22_15            | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | J15        |             | High Range | IO_L24N_T3_RS0_15            | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | J16        |             |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |

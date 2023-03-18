@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Thu Mar 16 09:18:13 2023
+| Date         : Sat Mar 18 09:20:15 2023
 | Host         : Angel running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_drc -file j1soc-drc.rpt
 | Design       : j1soc
@@ -25,16 +25,22 @@ Table of Contents
            Ruledeck: default
              Max violations: <unlimited>
              Violations found: 6
-+-------------+----------+-----------------------------------------------------+------------+
-| Rule        | Severity | Description                                         | Violations |
-+-------------+----------+-----------------------------------------------------+------------+
-| CFGBVS-1    | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153    | Warning  | Gated clock check                                   | 1          |
-| PLBUFGOPT-1 | Warning  | Non-Optimal connections to BUFG                     | 4          |
-+-------------+----------+-----------------------------------------------------+------------+
++-------------+------------------+-----------------------------------------------------+------------+
+| Rule        | Severity         | Description                                         | Violations |
++-------------+------------------+-----------------------------------------------------+------------+
+| LUTLP-1     | Critical Warning | Combinatorial Loop Alert                            | 1          |
+| CFGBVS-1    | Warning          | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
+| PDRC-153    | Warning          | Gated clock check                                   | 2          |
+| PLBUFGOPT-1 | Warning          | Non-Optimal connections to BUFG                     | 2          |
++-------------+------------------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+LUTLP-1#1 Critical Warning
+Combinatorial Loop Alert  
+1 LUT cells form a combinatorial loop. This can create a race condition. Timing analysis may not be accurate. The preferred resolution is to modify the design to remove combinatorial logic loops. If the loop is known and understood, this DRC can be bypassed by acknowledging the condition and setting the following XDC constraint on any one of the nets in the loop: 'set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets <myHier/myNet>]'. One net in the loop is ledout2t_reg_i_11_n_0. Please evaluate your design. The cells in the loop are: ledout2t_reg_i_11.
+Related violations: <none>
+
 CFGBVS-1#1 Warning
 Missing CFGBVS and CONFIG_VOLTAGE Design Properties  
 Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
@@ -50,6 +56,11 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
+Net ledout2t_reg_i_2_n_0 is a gated clock net sourced by a combinational pin ledout2t_reg_i_2/O, cell ledout2t_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
 Net per_d/d_16/ctl_dv/DV0_reg_i_1_n_0 is a gated clock net sourced by a combinational pin per_d/d_16/ctl_dv/DV0_reg_i_1/O, cell per_d/d_16/ctl_dv/DV0_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
@@ -60,17 +71,7 @@ Related violations: <none>
 
 PLBUFGOPT-1#2 Warning
 Non-Optimal connections to BUFG  
-A non-muxed BUFG sys_clk_i_IBUF_BUFG_inst_replica is driven by another global buffer sys_clk_i_IBUF_BUFG_inst_replica_1. Remove non-muxed BUFG if it is not desired
-Related violations: <none>
-
-PLBUFGOPT-1#3 Warning
-Non-Optimal connections to BUFG  
-A non-muxed BUFG sys_clk_i_IBUF_BUFG_inst_replica_1 is driven by another global buffer sys_clk_i_IBUF_BUFG_inst_replica_2. Remove non-muxed BUFG if it is not desired
-Related violations: <none>
-
-PLBUFGOPT-1#4 Warning
-Non-Optimal connections to BUFG  
-A non-muxed BUFG sys_clk_i_IBUF_BUFG_inst_replica_2 is driven by another global buffer sys_clk_i_IBUF_BUFG_inst_replica_3. Remove non-muxed BUFG if it is not desired
+A non-muxed BUFG sys_clk_i_IBUF_BUFG_inst_replica_1 is driven by another global buffer sys_clk_i_IBUF_BUFG_inst_replica. Remove non-muxed BUFG if it is not desired
 Related violations: <none>
 
 

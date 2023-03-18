@@ -2,8 +2,8 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Thu Mar 16 09:15:57 2023
-# Process ID: 38071
+# Start of session at: Sat Mar 18 09:18:05 2023
+# Process ID: 99879
 # Current directory: /home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/build_vivado
 # Command line: vivado -mode batch -source ../synthesis_vivado.tcl -tclargs j1soc ../j1soc.v ../j1.v ../dpram.v ../multiplier/peripheral_mult.v ../multiplier/mult_32/acc.v ../multiplier/mult_32/comp.v ../multiplier/mult_32/control_mult.v ../multiplier/mult_32/lsr.v ../multiplier/mult_32/rsr.v ../multiplier/mult_32/mult_32.v ../divider/peripheral_div.v ../divider/div_16/control_div.v ../divider/div_16/counter_div.v ../divider/div_16/div_16.v ../divider/div_16/final_result.v ../divider/div_16/lsr_div.v ../divider/div_16/subtractor.v ../dpRAM/core_peripheric.v ../dpRAM/dualport_RAM.v ../uart/uart.v ../uart/peripheral_uart.v ../dpRAM/dpRAM_interface.v xc7a100t-1csg324 ../j1soc.xdc
 # Log file: /home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/build_vivado/vivado.log

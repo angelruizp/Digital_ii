@@ -37,7 +37,10 @@ d# 35
 emit-uart
 d# 33
 emit-uart
-  
+
+do
+    d# 41 emit-uart
+loop
 ;
 
 

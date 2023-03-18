@@ -57,7 +57,7 @@ endcase
 end//----------------------------------------------mux_4
 
 									//(addr != 4'h4): se hace para evitar escrituras fantasma
-uart uart(.uart_busy(uart_busy), .uart_tx(uart_tx), .uart_wr_i(cs && wr && (addr != 4'h4) ), .uart_dat_i(d_in_uart), .sys_clk_i(clk), .sys_rst_i(rst));// System clock, 
+uart uart(.uart_busy(uart_busy), .uart_tx(uart_tx), .uart_wr_i(cs && wr && (addr != 4'h4) ), .uart_dat_i(d_in_uart), .sys_clk_i(clk), .sys_rst_i(~rst));// System clock, 
 
 
 endmodule

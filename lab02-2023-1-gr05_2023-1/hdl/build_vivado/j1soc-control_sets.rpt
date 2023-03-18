@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Thu Mar 16 09:17:31 2023
+| Date         : Sat Mar 18 09:19:36 2023
 | Host         : Angel running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_control_sets -verbose -file j1soc-control_sets.rpt
 | Design       : j1soc
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    33 |
-|    Minimum number of control sets                        |    33 |
+| Total control sets                                       |    27 |
+|    Minimum number of control sets                        |    27 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    53 |
+| Unused register locations in slices containing registers |    58 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    33 |
-| >= 0 to < 4        |     3 |
-| >= 4 to < 6        |     2 |
+| Total control sets |    27 |
+| >= 0 to < 4        |     5 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     2 |
-| >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     3 |
-| >= 16              |    21 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     4 |
+| >= 16              |    14 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              18 |           12 |
+| No           | No                    | No                     |              19 |           11 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              79 |           39 |
-| Yes          | No                    | No                     |             270 |           95 |
+| No           | Yes                   | No                     |              62 |           28 |
+| Yes          | No                    | No                     |             118 |           25 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             116 |           26 |
+| Yes          | Yes                   | No                     |             151 |           44 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,39 +73,33 @@ Table of Contents
 +------------------------------------+------------------------------------------------+------------------------------------+------------------+----------------+
 |            Clock Signal            |                  Enable Signal                 |          Set/Reset Signal          | Slice Load Count | Bel Load Count |
 +------------------------------------+------------------------------------------------+------------------------------------+------------------+----------------+
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[1]                           |                                    |                1 |              1 |
+|  ledout2t_reg_i_2_n_0              |                                                |                                    |                1 |              1 |
 |  per_d/d_16/ctl_dv/DV0_reg_i_1_n_0 |                                                |                                    |                1 |              1 |
 |  sys_clk_i_IBUF_BUFG               | per_u/uart/uart_tx_i_1_n_0                     | sys_rst_i_IBUF                     |                1 |              1 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[0]                           |                                    |                1 |              1 |
-| ~sys_clk_i_IBUF_BUFG               |                                                | per_d/d_16/ctl_dv/Q[0]             |                1 |              4 |
+|  sys_clk_i_IBUF_BUFG               |                                                |                                    |                2 |              3 |
 |  sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/count[3]_i_2_n_0             | per_d/d_16/ctl_dv/count[3]_i_1_n_0 |                1 |              4 |
-|  sys_clk_i_IBUF_BUFG               |                                                |                                    |                4 |              7 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[1]_0[0]                      |                                    |                1 |              8 |
-|  sys_clk_i_IBUF_BUFG               | per_u/uart/shifter[8]_i_1_n_0                  |                                    |                2 |              9 |
-| ~sys_clk_i_IBUF_BUFG               |                                                |                                    |                7 |             10 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[3][0]                        |                                    |                5 |             15 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[3]_0                         | cpu0/ram0/st0_reg[1]               |                2 |             15 |
-| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/FSM_onehot_state_reg[0]_0[0] |                                    |                3 |             15 |
-|  sys_clk_i_IBUF_BUFG               | st0_reg[15]_i_29_n_0                           |                                    |                8 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/E[0]                         | sys_rst_i_IBUF                     |                4 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/FSM_onehot_state_reg[1]_1[0] | per_d/d_16/ctl_dv/Q[0]             |                2 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | per_m/mt_32/control0/Q[3]                      | per_m/mt_32/control0/Q[0]          |                5 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/E[0]                                 |                                    |                5 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/ram_reg_1_0[0]                       |                                    |                2 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[1]_1[0]                      |                                    |                2 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_5_3                                 |                                    |                8 |             16 |
-| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[1]_2[0]                      |                                    |                2 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_1_4                                 |                                    |                5 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_4_0                                 |                                    |                7 |             16 |
-|  sys_clk_i_IBUF_BUFG               | F_6_reg[15]_i_3_n_0                            |                                    |                7 |             16 |
-|  sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/Q[1]                         | per_d/d_16/ctl_dv/Q[0]             |                3 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_6_1                                 |                                    |               12 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_3_2                                 |                                    |                9 |             16 |
-|  sys_clk_i_IBUF_BUFG               | dpRm/c_p/F_2_5                                 |                                    |                9 |             16 |
-|  sys_clk_i_IBUF_BUFG               | cpu0/ram0/_dstkW                               |                                    |                3 |             24 |
+|  sys_clk_i_IBUF_BUFG               | per_u/uart/shifter[7]_i_1_n_0                  | sys_rst_i_IBUF                     |                1 |              7 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[3]_0[0]                      |                                    |                2 |              8 |
+|  sys_clk_i_IBUF_BUFG               | sys_rst_i_IBUF                                 | cpu0/sys_rst_i                     |               11 |             13 |
+| ~sys_clk_i_IBUF_BUFG               |                                                |                                    |                7 |             14 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/st0_reg[3]_1                              | per_m/d_out[15]_i_1_n_0            |                2 |             15 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/st0_reg[3]                           | cpu0/ram0/st0_reg[2]_3             |                2 |             15 |
+| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/FSM_onehot_state_reg[0]_0[0] |                                    |                4 |             15 |
+|  sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/Q[1]                         | per_d/d_16/ctl_dv/Q[0]             |                7 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | per_m/mt_32/control0/Q[3]                      | per_m/mt_32/control0/Q[0]          |                3 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/E[0]                         | cpu0/sys_rst_i                     |                4 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | per_d/d_16/ctl_dv/FSM_onehot_state_reg[1]_0[0] | per_d/d_16/ctl_dv/Q[0]             |                4 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/s[1]                                 |                                    |                3 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/s[0]                                 |                                    |                4 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/E[0]                                 |                                    |                3 |             16 |
+| ~sys_clk_i_IBUF_BUFG               | cpu0/ram0/ram_reg_1_0[0]                       |                                    |                3 |             16 |
 |  sys_clk_i_IBUF_BUFG               | cpu0/ram0/_rstkW1_out                          |                                    |                3 |             24 |
-| ~sys_clk_i_IBUF_BUFG               | per_m/mt_32/control0/E[0]                      |                                    |                7 |             30 |
+|  sys_clk_i_IBUF_BUFG               | cpu0/ram0/_dstkW                               |                                    |                3 |             24 |
+|  sys_clk_i_IBUF_BUFG               |                                                | sys_rst_i_IBUF                     |                8 |             25 |
+| ~sys_clk_i_IBUF_BUFG               | per_m/mt_32/control0/E[0]                      |                                    |                5 |             30 |
 | ~sys_clk_i_IBUF_BUFG               | per_m/mt_32/control0/Q[2]                      | per_m/mt_32/control0/Q[0]          |                8 |             32 |
-|  sys_clk_i_IBUF_BUFG               |                                                | sys_rst_i_IBUF                     |               38 |             75 |
+|  sys_clk_i_IBUF_BUFG               |                                                | cpu0/sys_rst_i                     |               20 |             37 |
 +------------------------------------+------------------------------------------------+------------------------------------+------------------+----------------+
 
 
