@@ -1,0 +1,101 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Mar 16 09:14:30 2023
+# Process ID: 37753
+# Current directory: /home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/build_vivado
+# Command line: vivado -mode batch -source ../synthesis_vivado.tcl -tclargs j1soc ../j1soc.v ../j1.v ../dpram.v ../multiplier/peripheral_mult.v ../multiplier/mult_32/acc.v ../multiplier/mult_32/comp.v ../multiplier/mult_32/control_mult.v ../multiplier/mult_32/lsr.v ../multiplier/mult_32/rsr.v ../multiplier/mult_32/mult_32.v ../divider/peripheral_div.v ../divider/div_16/control_div.v ../divider/div_16/counter_div.v ../divider/div_16/div_16.v ../divider/div_16/final_result.v ../divider/div_16/lsr_div.v ../divider/div_16/subtractor.v ../dpRAM/core_peripheric.v ../dpRAM/dualport_RAM.v ../uart/uart.v ../uart/peripheral_uart.v ../dpRAM/dpRAM_interface.v xc7a100t-1csg324 ../j1soc.xdc
+# Log file: /home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/build_vivado/vivado.log
+# Journal file: /home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/build_vivado/vivado.jou
+#-----------------------------------------------------------
+source ../synthesis_vivado.tcl
+# set DESIGN [lindex $argv 0]
+# set SRC [split [lindex $argv 1]]
+# set DEVICE [lindex $argv 2]
+# set PINS [lindex $argv 3]
+# create_project -force -name $DESIGN -part $DEVICE
+# set_msg_config -id {Common 17-55} -new_severity {Warning}
+# read_verilog $SRC
+# read_xdc $PINS
+# set_property PROCESSING_ORDER EARLY [get_files $DESIGN.xdc]
+# synth_design -directive default -top $DESIGN -part $DEVICE
+Command: synth_design -directive default -top j1soc -part xc7a100t-1csg324
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 37882 
+WARNING: [Synth 8-2507] parameter declaration becomes local in dp_ram with formal parameter declaration list [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/dpram.v:24]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1862.605 ; gain = 206.688 ; free physical = 9435 ; free virtual = 13329
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'j1soc' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1soc.v:1]
+	Parameter bootram_file bound to: ../firmware/Hello_World/j1.mem - type: string 
+	Parameter clk_freq bound to: 25000000 - type: integer 
+	Parameter uart_baud_rate bound to: 115200 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'j1' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1.v:1]
+	Parameter bootram_file bound to: ../firmware/Hello_World/j1.mem - type: string 
+INFO: [Synth 8-6157] synthesizing module 'dp_ram' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/dpram.v:5]
+	Parameter adr_width bound to: 13 - type: integer 
+	Parameter dat_width bound to: 16 - type: integer 
+	Parameter mem_file_name bound to: ../firmware/Hello_World/j1.mem - type: string 
+	Parameter depth bound to: 8192 - type: integer 
+INFO: [Synth 8-3876] $readmem data file '../firmware/Hello_World/j1.mem' is read successfully [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/dpram.v:52]
+INFO: [Synth 8-6155] done synthesizing module 'dp_ram' (1#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/dpram.v:5]
+WARNING: [Synth 8-689] width (15) of port connection 'adr_a' does not match port width (13) of module 'dp_ram' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1.v:47]
+INFO: [Synth 8-226] default block is never used [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1.v:65]
+INFO: [Synth 8-226] default block is never used [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'j1' (2#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'peripheral_mult' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/peripheral_mult.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mult_32' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/mult_32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'rsr' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/rsr.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'rsr' (3#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/rsr.v:1]
+INFO: [Synth 8-6157] synthesizing module 'lsr' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/lsr.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'lsr' (4#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/lsr.v:1]
+INFO: [Synth 8-6157] synthesizing module 'comp' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/comp.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'comp' (5#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/comp.v:1]
+INFO: [Synth 8-6157] synthesizing module 'acc' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/acc.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'acc' (6#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/acc.v:1]
+INFO: [Synth 8-6157] synthesizing module 'control_mult' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/control_mult.v:1]
+	Parameter START bound to: 3'b000 
+	Parameter CHECK bound to: 3'b001 
+	Parameter SHIFT bound to: 3'b010 
+	Parameter ADD bound to: 3'b011 
+	Parameter END bound to: 3'b100 
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/control_mult.v:41]
+INFO: [Synth 8-6155] done synthesizing module 'control_mult' (7#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/control_mult.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mult_32' (8#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/mult_32/mult_32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'peripheral_mult' (9#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/multiplier/peripheral_mult.v:1]
+INFO: [Synth 8-6157] synthesizing module 'peripheral_div' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/peripheral_div.v:1]
+INFO: [Synth 8-6157] synthesizing module 'div_16' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/div_16.v:1]
+INFO: [Synth 8-6157] synthesizing module 'lsr_div' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/lsr_div.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'lsr_div' (10#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/lsr_div.v:1]
+INFO: [Synth 8-6157] synthesizing module 'subtractor' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/subtractor.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'subtractor' (11#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/subtractor.v:1]
+INFO: [Synth 8-6157] synthesizing module 'counter_div' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/counter_div.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'counter_div' (12#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/counter_div.v:1]
+INFO: [Synth 8-6157] synthesizing module 'control_div' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/control_div.v:1]
+	Parameter START bound to: 3'b000 
+	Parameter SHIFT_DEC bound to: 3'b001 
+	Parameter CHECK bound to: 3'b010 
+	Parameter ADD bound to: 3'b011 
+	Parameter LOAD bound to: 3'b101 
+	Parameter END1 bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'control_div' (13#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/control_div.v:1]
+INFO: [Synth 8-6157] synthesizing module 'final_result' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/final_result.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'final_result' (14#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/final_result.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'div_16' (15#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/div_16/div_16.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'peripheral_div' (16#1) [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/divider/peripheral_div.v:1]
+ERROR: [Synth 8-3438] module 'peripheral_uart' declared at '/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/uart/peripheral_uart.v:1' does not have any parameter 'clk_freq' used as named parameter override [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1soc.v:62]
+ERROR: [Synth 8-6156] failed synthesizing module 'j1soc' [/home/angel/github_files/lab02-2023-1-gr05_2023-1/hdl/j1soc.v:1]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1904.480 ; gain = 248.562 ; free physical = 9452 ; free virtual = 13362
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+39 Infos, 3 Warnings, 0 Critical Warnings and 3 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 16 09:14:55 2023...

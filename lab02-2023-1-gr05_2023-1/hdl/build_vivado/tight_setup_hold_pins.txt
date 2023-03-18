@@ -1,0 +1,18 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |              sys_clk_pin |                                                                   dpRm/c_p/FSM_sequential_estado_reg[0]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                     per_m/d_out_reg[13]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[4]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[2]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[0]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[8]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                     per_m/d_out_reg[12]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[9]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[1]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                     per_m/d_out_reg[10]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[6]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[5]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                      per_m/d_out_reg[7]/D|
+|              sys_clk_pin |              sys_clk_pin |                                                                                     per_m/d_out_reg[11]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
